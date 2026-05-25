@@ -1,0 +1,1305 @@
+/* ===================================================
+   CSS VARIABLES
+   =================================================== */
+:root {
+  --grad: linear-gradient(45deg, #00658d, #00aeef);
+  --grad-text: linear-gradient(45deg, #00658d, #00aeef);
+  --clr-primary: #00aeef;
+  --clr-dark: #00658d;
+  --clr-bg: rgb(233, 242, 253);
+  --clr-dark-bg: #0f172a;
+  --clr-card-bg: #131f30;
+  --shadow-blue: 0 0 20px rgba(0, 174, 239, 0.5);
+  --radius-lg: 20px;
+  --radius-xl: 5rem;
+  --transition: 0.3s ease;
+  --header-h: 80px;
+  --banner-h: 36px;
+}
+
+/* ===================================================
+   FONTS
+   =================================================== */
+@font-face {
+  font-family: "N";
+  src: url("./fonts/Naskh.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "r";
+  src: url("./fonts/Ruqaa.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "d";
+  src: url("./fonts/d.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===================================================
+   RESET
+   =================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-padding-top: calc(var(--header-h) + var(--banner-h) + 2rem);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #000000;
+  background: var(--clr-bg);
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+p { margin: 0; padding: 0; }
+
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+li { margin: 0; padding: 0; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+button:active { transform: scale(0.98); }
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.3);
+  outline-offset: 2px;
+}
+
+/* ===================================================
+   LAYOUT
+   =================================================== */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16rem;
+}
+
+/* ===================================================
+   HEADER
+   =================================================== */
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px 20px;
+  gap: 30px;
+  width: 100%;
+  height: var(--header-h);
+  background-color: #ffffff;
+  font-family: "r", sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  /* فراغ للـ banner بالأسفل */
+  margin-bottom: var(--banner-h);
+}
+
+/* البانر كعنصر مستقل تحت الهيدر — top:100% بدل bottom:-50% */
+header::after {
+  content: "التسويق والحلول التكنولوجية | تنمية المشاريع";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--banner-h);
+  font-size: 1.7rem;
+  background: var(--grad);
+  position: absolute;
+  top: 100%;          /* أسفل الهيدر مباشرة — الحل الصحيح */
+  left: 0;
+  color: #ffffff;
+  letter-spacing: 0.03em;
+}
+
+.logo {
+  width: 60px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: solid 4px var(--clr-primary);
+  box-shadow: var(--shadow-blue);
+  object-fit: cover;
+}
+
+header nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+header nav a {
+  position: relative;
+  padding-bottom: 4px;
+  color: #0f172a;
+  font-size: 1.9rem;
+  transition: color var(--transition);
+}
+
+header nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background: var(--grad);
+  transition: width var(--transition);
+}
+
+header nav a:hover { color: var(--clr-primary); }
+header nav a:hover::after { width: 100%; }
+
+/* ===================================================
+   SECTION 1 — HERO
+   =================================================== */
+.section1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  gap: 30px;
+  width: 100%;
+  padding: 2rem 4rem 0;
+}
+
+.section1 img {
+  width: 420px;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-blue);
+  animation: float 3s infinite alternate ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes float {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-12px); }
+}
+
+.text { width: 50%; }
+
+.text p {
+  margin-top: 2.5rem;
+  font-family: "r", sans-serif;
+  font-weight: 900;
+  font-size: 2.6rem;
+  color: #808080;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.text h1 {
+  font-family: "d", sans-serif;
+  font-weight: 900;
+  font-size: 9rem;
+  line-height: 1.15;
+}
+
+.text span {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ===================================================
+   BUTTON
+   =================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  font-size: 2.8rem;
+  padding: 1rem 3.5rem;
+  border-radius: 20rem;
+  background: var(--grad);
+  color: #ffffff;
+  font-family: "n", sans-serif;
+  font-weight: bolder;
+  box-shadow: var(--shadow-blue);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: scale(1.08) translateY(-4px);
+  box-shadow: 0 10px 32px rgba(0, 174, 239, 0.55);
+}
+
+/* ===================================================
+   SECTION 2 — SERVICES OVERVIEW
+   =================================================== */
+.section2 {
+  background-color: rgb(224, 224, 224);
+  width: 100%;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+/* مشترك: gradient text heading */
+.grad-text {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.h3 {
+  font-family: "r", sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  text-align: center;
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.8rem;
+}
+
+.h11 {
+  font-family: "n", sans-serif;
+  font-weight: 900;
+  font-size: 5.5rem;
+  text-align: center;
+  color: #272727;
+}
+
+.icons {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  width: 100%;
+}
+
+.icon {
+  width: 40px;
+  align-self: flex-start;
+}
+
+.icon1 {
+  background-color: white;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 340px;
+  min-height: 260px;
+  box-shadow: 0 0 8px rgba(0, 174, 239, 0.25);
+  transition: var(--transition);
+}
+
+.icon1:hover { transform: scale(1.04) translateY(-4px); }
+
+.icon3 {
+  border-radius: var(--radius-lg);
+  width: 55%;
+  height: auto;
+}
+
+.icon1 h1 {
+  font-family: "n", sans-serif;
+  font-weight: 900;
+  font-size: 4.5rem;
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.3;
+}
+
+.icon1 p {
+  font-family: "r", sans-serif;
+  font-weight: 900;
+  font-size: 1.9rem;
+  color: #555;
+}
+
+/* ===================================================
+   SECTION 3 — PROTOCOL BANNER
+   =================================================== */
+
+/*
+  الحل الصحيح: بدل ما نستخدم translateY سالب وmargin سالب
+  نستخدم position relative + z-index + margin-bottom سالب محدود
+*/
+.section3-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -8rem;   /* التداخل مع sec4 — قيمة واحدة بدل قيمتين متعارضتين */
+}
+
+.section3 {
+  background: var(--grad);
+  width: 88%;
+  padding: 50px 60px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-blue);
+  color: white;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.section3:hover { transform: scale(1.03); }
+
+.section3 h1 {
+  font-family: "n", sans-serif;
+  margin-bottom: 1.5rem;
+  font-size: 5rem;
+  font-weight: 900;
+}
+
+.section3 p {
+  font-family: "r", sans-serif;
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ===================================================
+   SEC4 — ADVANCED SERVICES (DARK)
+   =================================================== */
+.sec4 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+  padding-top: 14rem;   /* تعويض الـ margin-bottom السالب من section3-wrapper */
+  background-color: var(--clr-dark-bg);
+}
+
+.h33 {
+  font-family: "r", sans-serif;
+  font-weight: 900;
+  font-size: 4.5rem;
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.h111 {
+  font-family: "n", sans-serif;
+  font-weight: 900;
+  font-size: 13rem;
+  color: #e2e8f0;
+  line-height: 1;
+}
+
+/* ===================================================
+   SECTION 4 — CARDS GRID
+   =================================================== */
+.section4 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  padding: 4rem 3rem 5rem;
+  background-color: var(--clr-dark-bg);
+  gap: 1.4rem;
+}
+
+.card {
+  background: var(--clr-card-bg);
+  border-radius: 22px;
+  padding: 2rem 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  color: white;
+  text-align: right;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 0 22px 0 80px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: background 0.25s ease;
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.13);
+  background: #1a2840;
+}
+
+.card:hover::after { background: rgba(255, 255, 255, 0.06); }
+
+.card span {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--clr) 15%, transparent);
+}
+
+.card span i { font-size: 1.8rem; }
+
+.card h3 {
+  font-family: "n", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.card p.price-half {
+  font-family: "r", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--clr);
+  margin: 0;
+  margin-top: auto;
+}
+
+/* ===================================================
+   SEC5 — PRICING PLANS
+   =================================================== */
+.sec5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 4rem;
+}
+
+.section5 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  gap: 24px;
+  padding: 40px 28px;
+  direction: rtl;
+  font-family: "r", sans-serif;
+  width: 100%;
+}
+
+.carde {
+  background: white;
+  border-radius: 40px;
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(0, 174, 239, 0.12);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 24px rgba(0, 174, 239, 0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  gap: 1.2rem;
+}
+
+.carde:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 174, 239, 0.22);
+}
+
+.carde.popular {
+  border: 2.5px solid #1a90ff;
+  /* لا تحتاج scale هنا — يكفي الـ border والـ shadow */
+  box-shadow: 0 6px 32px rgba(26, 144, 255, 0.25);
+}
+
+.carde.popular:hover {
+  transform: translateY(-8px);
+}
+
+.badge {
+  background: #0084ff;
+  color: white;
+  padding: 5px 18px;
+  border-radius: 20px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* زر مليء */
+.aa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 2rem);
+  background: var(--grad);
+  border-radius: 40px;
+  padding: 1.6rem 2rem;
+  margin: 0.8rem 1rem 0;
+  color: white;
+  font-family: "r", sans-serif;
+  font-weight: 900;
+  font-size: 2.4rem;
+  transition: var(--transition);
+  cursor: pointer;
+  text-align: center;
+}
+
+.aa:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(0,174,239,0.4); }
+
+/* زر مجوف */
+.a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 2rem);
+  background: transparent;
+  border-radius: 40px;
+  padding: 1.6rem 2rem;
+  margin: 0.8rem 1rem 0;
+  border: 2.5px solid var(--clr-primary);
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: "r", sans-serif;
+  font-weight: 900;
+  font-size: 2.4rem;
+  transition: var(--transition);
+  cursor: pointer;
+  text-align: center;
+}
+
+.a:hover { transform: scale(1.04); }
+
+.rr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+ul li {
+  margin-bottom: 10px;
+  font-size: 1.65rem;
+  padding-right: 22px;
+  position: relative;
+  color: #444;
+}
+
+ul li::before {
+  content: "✓";
+  position: absolute;
+  right: 0;
+  font-weight: bold;
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.carde img { width: 75px; }
+
+h3 { color: #333; margin-top: 8px; }
+p  { color: #666; }
+
+/* ===================================================
+   WHATSAPP BUTTON
+   =================================================== */
+.wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: #fff;
+  text-decoration: none;
+  padding: 16px 30px;
+  border-radius: 50px;
+  font-size: 2.4rem;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  direction: rtl;
+}
+
+.wa-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.55);
+}
+
+.wa-icon  { width: 26px; height: 26px; }
+.wa-arrow { width: 18px; height: 18px; transition: transform 0.2s ease; }
+.wa-btn:hover .wa-arrow { transform: translateX(4px); }
+
+/* ===================================================
+   SEC6 — CTA
+   =================================================== */
+.sec6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.sec6 span {
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: "n", sans-serif;
+  font-weight: 900;
+}
+
+.text1 {
+  font-family: "d", sans-serif;
+  font-weight: 900;
+  font-size: 9rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.text2 {
+  font-family: "r", sans-serif;
+  font-weight: 900;
+  font-size: 2.4rem;
+  text-align: center;
+  color: #808080;
+  max-width: 700px;
+  line-height: 1.7;
+}
+
+/* ===================================================
+   FOOTER
+   =================================================== */
+footer {
+  background: #0d1117;
+  color: #e6edf3;
+  direction: rtl;
+  font-family: "Cairo", "Segoe UI", sans-serif;
+  padding: 60px 40px 30px;
+  border-top: 1px solid #21262d;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(99,102,241,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #21262d;
+  align-items: start;
+}
+
+.footer-brand h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+
+.footer-brand p { font-size: 14px; color: #8b949e; line-height: 1.7; }
+
+.brand-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6366f1;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.footer-col h4,
+.footer-social h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 18px;
+}
+
+.footer-col ul li { margin-bottom: 10px; }
+
+.footer-col ul li a {
+  color: #c9d1d9;
+  font-size: 14px;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+.footer-col ul li a:hover { color: #6366f1; }
+
+.footer-col ul li::before { display: none; }
+
+.footer-col ul li a::before {
+  content: "←";
+  font-size: 11px;
+  opacity: 0.4;
+  transition: opacity 0.2s, transform 0.2s;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: #c9d1d9;
+  position: static;
+}
+
+.footer-col ul li a:hover::before {
+  opacity: 1;
+  transform: translateX(-3px);
+}
+
+.social-links { display: flex; flex-direction: column; gap: 10px; }
+
+.fb-btn,
+.wa2-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  width: fit-content;
+}
+
+.fb-btn  { background: #1877f2; color: #fff; box-shadow: 0 3px 14px rgba(24,119,242,0.35); }
+.wa2-btn { background: #25d366; color: #fff; box-shadow: 0 3px 14px rgba(37,211,102,0.3); }
+
+.fb-btn:hover,
+.wa2-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+.btn-arrow { transition: transform 0.18s ease; }
+.fb-btn:hover .btn-arrow,
+.wa2-btn:hover .btn-arrow { transform: translateX(-4px); }
+
+.footer-bottom {
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.footer-copyright { font-size: 13px; color: #6e7681; }
+
+.footer-copyright span {
+  color: #8b949e;
+  font-weight: 500;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+.footer-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6e7681;
+  background: #161b22;
+  border: 1px solid #21262d;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.footer-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3fb950;
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* ===================================================
+   ACTIVE NAV LINKS
+   =================================================== */
+.container:has(#main:target)      .nav__main,
+.container:has(#services:target)  .nav__services,
+.container:has(#packages:target)  .nav__packages,
+.container:has(#subscribe:target) .nav__subscribe {
+  color: var(--clr-primary);
+  font-weight: bold;
+}
+
+/* ===================================================
+   HAMBURGER MENU
+   =================================================== */
+.ham-btn {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 200;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.ham-btn:hover { background: rgba(0, 174, 239, 0.1); }
+
+.bar {
+  display: block;
+  width: 22px;
+  height: 2.5px;
+  background: #0f172a;
+  border-radius: 3px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.ham-btn.open .bar:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.ham-btn.open .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.ham-btn.open .bar:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  background: #ffffff;
+  border-bottom: 3px solid var(--clr-primary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  /* sticky بعد الهيدر والبانر مباشرة */
+  position: sticky;
+  top: calc(var(--header-h) + var(--banner-h));
+  z-index: 99;
+  width: 100%;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+
+.nav-mobile.show { max-height: 320px; }
+
+.nav-mobile a {
+  font-family: "r", sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #0f172a;
+  padding: 14px 24px;
+  border-bottom: 1px solid rgba(0, 174, 239, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+.nav-mobile a:last-child { border-bottom: none; }
+.nav-mobile a:hover { background: #f0f9ff; color: var(--clr-primary); }
+
+/* ===================================================
+   RESPONSIVE — 1400px
+   =================================================== */
+@media (max-width: 1400px) {
+  .text h1  { font-size: 7.5rem; }
+  .h111     { font-size: 11rem; }
+  .text1    { font-size: 7.5rem; }
+}
+
+/* ===================================================
+   RESPONSIVE — 1200px
+   =================================================== */
+@media (max-width: 1200px) {
+  .section4,
+  .section5 { grid-template-columns: repeat(2, 1fr); }
+
+  .icon1  { width: 300px; }
+  .h111   { font-size: 9rem; }
+  .text h1 { font-size: 6.5rem; }
+  .text1  { font-size: 6.5rem; }
+
+  .section3 { width: 94%; }
+}
+
+/* ===================================================
+   RESPONSIVE — 992px
+   =================================================== */
+@media (max-width: 992px) {
+  html { font-size: 55%; }
+
+  :root {
+    --header-h: 72px;
+    --banner-h: 32px;
+  }
+
+  .container { gap: 10rem; }
+
+  .section1 {
+    flex-direction: column-reverse;
+    padding: 5rem 2rem 2rem;
+    gap: 20px;
+  }
+
+  .section1 img { width: 320px; }
+
+  .text { width: 90%; text-align: center; }
+  .text h1 { font-size: 6rem; }
+
+  .icon1 { width: 280px; min-height: auto; }
+
+  .section4,
+  .section5 {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem 2rem;
+  }
+
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 30px; }
+
+  .h111  { font-size: 7.5rem; }
+  .text1 { font-size: 6.5rem; }
+
+  .section3 { padding: 40px; }
+}
+
+/* ===================================================
+   RESPONSIVE — 768px
+   =================================================== */
+@media (max-width: 768px) {
+  html { font-size: 50%; }
+
+  :root {
+    --header-h: 64px;
+    --banner-h: 30px;
+  }
+
+  /* الهامبرغر */
+  .nav-desktop { display: none !important; }
+  .ham-btn     { display: flex; }
+  .nav-mobile  { display: flex; }
+
+  header {
+    padding: 8px 16px;
+    justify-content: space-between;
+  }
+
+  header::after { font-size: 1.4rem; }
+
+  .logo { width: 50px; }
+
+  /* Hero */
+  .section1 {
+    padding: 4rem 1.5rem 2rem;
+    gap: 15px;
+  }
+  .section1 img { width: 280px; }
+  .text { width: 100%; }
+  .text h1 { font-size: 5rem; }
+  .text p  { font-size: 2rem; }
+
+  /* Section2 */
+  .section2 { padding: 30px 15px; gap: 30px; }
+  .icons { flex-direction: column; align-items: center; }
+  .icon1 { width: 100%; max-width: 440px; min-height: auto; }
+  .h3  { font-size: 2rem; }
+  .h11 { font-size: 4rem; }
+
+  /* Section3 wrapper */
+  .section3-wrapper { margin-bottom: -5rem; }
+
+  .section3 {
+    width: 100%;
+    border-radius: 3rem;
+    padding: 35px 24px;
+  }
+  .section3 h1 { font-size: 4rem; }
+  .section3 p  { font-size: 2rem; }
+
+  /* Sec4 */
+  .sec4 { padding-top: 10rem; }
+  .h33  { font-size: 3.5rem; }
+  .h111 { font-size: 6.5rem; }
+
+  /* Grids → 1 column */
+  .section4,
+  .section5 {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+    gap: 1rem;
+  }
+
+  /* Pricing */
+  .carde.popular { transform: none; }
+
+  /* Footer */
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* CTA */
+  .text1 { font-size: 5rem; }
+  .text2 { font-size: 2rem; padding: 0 1rem; }
+  .sec6  { gap: 2.5rem; }
+  .btn   { font-size: 2.2rem; }
+}
+
+/* ===================================================
+   RESPONSIVE — 576px
+   =================================================== */
+@media (max-width: 576px) {
+  html { font-size: 47%; }
+
+  :root {
+    --header-h: 60px;
+    --banner-h: 28px;
+  }
+
+  .container { gap: 7rem; }
+
+  .section1 img { width: 85%; max-width: 300px; }
+  .text h1 { font-size: 4.5rem; }
+
+  .btn {
+    font-size: 2rem;
+    padding: 1rem 2.5rem;
+    min-height: auto;
+  }
+
+  .icon1 { border-radius: 15px; }
+  .icon1 h1 { font-size: 3.8rem; }
+
+  .section3 {
+    border-radius: 2.5rem;
+    padding: 28px 18px;
+  }
+  .section3 h1 { font-size: 3.8rem; }
+
+  .h111 { font-size: 5.5rem; }
+  .h33  { font-size: 3rem; }
+
+  .card h3  { font-size: 2.4rem; }
+  .carde    { border-radius: 30px; padding: 2rem 1.5rem; }
+  .aa, .a   { font-size: 2.2rem; }
+
+  .text1 { font-size: 4rem; }
+}
+
+/* ===================================================
+   RESPONSIVE — 480px
+   =================================================== */
+@media (max-width: 480px) {
+  html { font-size: 45%; }
+
+  :root {
+    --header-h: 58px;
+    --banner-h: 26px;
+  }
+
+  .container { gap: 6rem; }
+
+  header { padding: 8px 12px; }
+  .logo  { width: 46px; }
+
+  .section1 { padding: 3rem 1rem 1.5rem; }
+  .section1 img { width: 100%; max-width: 280px; border-radius: 15px; }
+
+  .text h1 { font-size: 4rem; }
+  .text p  { font-size: 1.8rem; margin-top: 1.5rem; margin-bottom: 1.5rem; }
+
+  .btn { font-size: 1.9rem; padding: 1rem 2rem; }
+
+  .section2 { padding: 20px 10px; gap: 25px; }
+  .icon1 { padding: 16px; }
+  .icon1 h1 { font-size: 3.5rem; }
+  .icon1 p  { font-size: 1.8rem; }
+
+  /* Section3 — بدون rounded corners على الأطراف لما تبقى full-width */
+  .section3-wrapper { margin-bottom: -4rem; }
+  .section3 {
+    width: 100%;
+    border-radius: 2rem;
+    padding: 24px 16px;
+  }
+  .section3 h1 { font-size: 3.5rem; }
+  .section3 p  { font-size: 1.8rem; }
+
+  .sec4 { padding-top: 9rem; }
+  .h33  { font-size: 3rem; }
+  .h111 { font-size: 5rem; }
+
+  .section4,
+  .section5 { padding: 1.5rem 1rem; gap: 0.8rem; }
+
+  .card { border-radius: 18px; padding: 1.75rem 1.5rem; }
+  .card h3 { font-size: 2.2rem; }
+
+  .carde { border-radius: 26px; }
+  .aa, .a { font-size: 2rem; }
+
+  .sec5 { padding: 0 0.5rem; }
+  .sec6 { gap: 2rem; padding: 0 1rem; }
+  .text1 { font-size: 3.5rem; }
+  .text2 { font-size: 1.8rem; }
+
+  footer { padding: 40px 16px 20px; }
+  .footer-brand h2 { font-size: 17px; }
+  .wa-btn { font-size: 1.9rem; padding: 14px 20px; }
+}
+
+/* ===================================================
+   RESPONSIVE — 360px
+   =================================================== */
+@media (max-width: 360px) {
+  html { font-size: 40%; }
+
+  :root {
+    --header-h: 56px;
+    --banner-h: 24px;
+  }
+
+  .text h1 { font-size: 3.5rem; }
+  .section1 img { max-width: 240px; }
+  .btn { font-size: 1.8rem; padding: 0.9rem 1.8rem; }
+
+  .icon1 h1 { font-size: 3rem; }
+  .h11  { font-size: 3.5rem; }
+  .h33  { font-size: 2.8rem; }
+  .h111 { font-size: 4.5rem; }
+
+  .section3 h1 { font-size: 3rem; }
+  .section3 p  { font-size: 1.6rem; }
+
+  .card h3 { font-size: 2rem; }
+  .aa, .a  { font-size: 1.8rem; }
+
+  .text1 { font-size: 3rem; }
+  .text2 { font-size: 1.6rem; }
+
+  .nav-mobile a { font-size: 1.8rem; padding: 12px 16px; }
+  .footer-brand h2 { font-size: 15px; }
+}
