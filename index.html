@@ -40,6 +40,16 @@
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </button>
+
+                <!-- زر تبديل السيم فاتح/داكن -->
+                <input type="checkbox" id="themeToggle" class="theme-toggle-input">
+                <label for="themeToggle" class="theme-toggle-btn" aria-label="تبديل السيم">
+                    <span class="toggle-track">
+                        <span class="toggle-thumb"></span>
+                        <span class="icon-sun">☀️</span>
+                        <span class="icon-moon">🌙</span>
+                    </span>
+                </label>
             </header>
 
             <!-- شريط البانر الأزرق -->
@@ -73,6 +83,19 @@
                 if (!hamBtn.contains(e.target) && !navMobile.contains(e.target)) {
                     closeMenu();
                 }
+            });
+
+            // ─── حفظ واستعادة تفضيل السيم ───
+            const themeToggle = document.getElementById('themeToggle');
+
+            // استعادة الإعداد المحفوظ
+            if (localStorage.getItem('darkMode') === '1') {
+                themeToggle.checked = true;
+            }
+
+            // حفظ عند كل تغيير
+            themeToggle.addEventListener('change', () => {
+                localStorage.setItem('darkMode', themeToggle.checked ? '1' : '0');
             });
         </script>
         <div class="section1" id="main">
