@@ -139,6 +139,16 @@ table {
 }
 
 /* ===================================================
+   STICKY TOP WRAPPER — يضمن التصاق الكل معاً
+   =================================================== */
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+/* ===================================================
    HEADER
    =================================================== */
 header {
@@ -154,26 +164,19 @@ header {
   font-family: "r", sans-serif;
   font-weight: 900;
   font-size: 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  /* فراغ للـ banner بالأسفل */
-  margin-bottom: var(--banner-h);
 }
 
-/* البانر كعنصر مستقل تحت الهيدر — top:100% بدل bottom:-50% */
-header::after {
-  content: "التسويق والحلول التكنولوجية | تنمية المشاريع";
+/* شريط البانر — داخل الـ sticky wrapper */
+.banner {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: var(--banner-h);
   font-size: 1.7rem;
+  font-family: "r", sans-serif;
+  font-weight: 900;
   background: var(--grad);
-  position: absolute;
-  top: 100%;          /* أسفل الهيدر مباشرة — الحل الصحيح */
-  left: 0;
   color: #ffffff;
   letter-spacing: 0.03em;
 }
@@ -532,7 +535,7 @@ header nav a:hover::after { width: 100%; }
   background: color-mix(in srgb, var(--clr) 15%, transparent);
 }
 
-.card span i { font-size: 1.8rem; }
+.card span i { font-size: 2rem; }
 
 .card h3 {
   font-family: "n", sans-serif;
@@ -670,7 +673,7 @@ header nav a:hover::after { width: 100%; }
 
 ul li {
   margin-bottom: 10px;
-  font-size: 1.65rem;
+  font-size: 1.8rem;
   padding-right: 22px;
   position: relative;
   color: #444;
@@ -986,10 +989,6 @@ footer::before {
   background: #ffffff;
   border-bottom: 3px solid var(--clr-primary);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  /* sticky بعد الهيدر والبانر مباشرة */
-  position: sticky;
-  top: calc(var(--header-h) + var(--banner-h));
-  z-index: 99;
   width: 100%;
   overflow: hidden;
   max-height: 0;
@@ -1033,10 +1032,10 @@ footer::before {
   .section4,
   .section5 { grid-template-columns: repeat(2, 1fr); }
 
-  .icon1  { width: 300px; }
-  .h111   { font-size: 9rem; }
+  .icon1   { width: 300px; }
+  .h111    { font-size: 9rem; }
   .text h1 { font-size: 6.5rem; }
-  .text1  { font-size: 6.5rem; }
+  .text1   { font-size: 6.5rem; }
 
   .section3 { width: 94%; }
 }
@@ -1045,7 +1044,7 @@ footer::before {
    RESPONSIVE — 992px
    =================================================== */
 @media (max-width: 992px) {
-  html { font-size: 55%; }
+  html { font-size: 58%; }
 
   :root {
     --header-h: 72px;
@@ -1056,14 +1055,15 @@ footer::before {
 
   .section1 {
     flex-direction: column-reverse;
-    padding: 5rem 2rem 2rem;
-    gap: 20px;
+    padding: 5rem 2.5rem 2rem;
+    gap: 25px;
   }
 
-  .section1 img { width: 320px; }
+  .section1 img { width: 340px; }
 
   .text { width: 90%; text-align: center; }
-  .text h1 { font-size: 6rem; }
+  .text h1 { font-size: 6.5rem; }
+  .text p  { font-size: 2.4rem; }
 
   .icon1 { width: 280px; min-height: auto; }
 
@@ -1085,11 +1085,11 @@ footer::before {
    RESPONSIVE — 768px
    =================================================== */
 @media (max-width: 768px) {
-  html { font-size: 50%; }
+  html { font-size: 72%; }
 
   :root {
-    --header-h: 64px;
-    --banner-h: 30px;
+    --header-h: 68px;
+    --banner-h: 34px;
   }
 
   /* الهامبرغر */
@@ -1098,30 +1098,30 @@ footer::before {
   .nav-mobile  { display: flex; }
 
   header {
-    padding: 8px 16px;
+    padding: 10px 20px;
     justify-content: space-between;
   }
 
-  header::after { font-size: 1.4rem; }
+  .banner { font-size: 1.9rem; }
 
-  .logo { width: 50px; }
+  .logo { width: 52px; }
 
   /* Hero */
   .section1 {
-    padding: 4rem 1.5rem 2rem;
-    gap: 15px;
+    padding: 4.5rem 2rem 2rem;
+    gap: 20px;
   }
-  .section1 img { width: 280px; }
+  .section1 img { width: 310px; }
   .text { width: 100%; }
-  .text h1 { font-size: 5rem; }
-  .text p  { font-size: 2rem; }
+  .text h1 { font-size: 6.5rem; }
+  .text p  { font-size: 2.8rem; }
 
   /* Section2 */
-  .section2 { padding: 30px 15px; gap: 30px; }
+  .section2 { padding: 40px 20px; gap: 35px; }
   .icons { flex-direction: column; align-items: center; }
-  .icon1 { width: 100%; max-width: 440px; min-height: auto; }
-  .h3  { font-size: 2rem; }
-  .h11 { font-size: 4rem; }
+  .icon1 { width: 100%; max-width: 460px; min-height: auto; }
+  .h3  { font-size: 2.8rem; }
+  .h11 { font-size: 5.8rem; }
 
   /* Section3 wrapper */
   .section3-wrapper { margin-bottom: -5rem; }
@@ -1129,26 +1129,35 @@ footer::before {
   .section3 {
     width: 100%;
     border-radius: 3rem;
-    padding: 35px 24px;
+    padding: 42px 30px;
   }
-  .section3 h1 { font-size: 4rem; }
-  .section3 p  { font-size: 2rem; }
+  .section3 h1 { font-size: 5.8rem; }
+  .section3 p  { font-size: 2.7rem; }
 
   /* Sec4 */
   .sec4 { padding-top: 10rem; }
-  .h33  { font-size: 3.5rem; }
-  .h111 { font-size: 6.5rem; }
+  .h33  { font-size: 4.8rem; }
+  .h111 { font-size: 8.5rem; }
 
   /* Grids → 1 column */
   .section4,
   .section5 {
     grid-template-columns: 1fr;
-    padding: 2rem 1.5rem;
-    gap: 1rem;
+    padding: 2.5rem 1.8rem;
+    gap: 1.3rem;
   }
+
+  /* Bigger cards on mobile */
+  .card { padding: 3rem 2.4rem; border-radius: 24px; }
+  .card h3 { font-size: 3.8rem; }
+  .card span { width: 68px; height: 68px; border-radius: 18px; }
+  .card span i { font-size: 2.8rem; }
+  .card p.price-half { font-size: 2.4rem; }
 
   /* Pricing */
   .carde.popular { transform: none; }
+  .carde { padding: 3.2rem 2.2rem; }
+  .aa, .a { font-size: 3.2rem; padding: 2rem 2rem; }
 
   /* Footer */
   .footer-top {
@@ -1162,62 +1171,148 @@ footer::before {
   }
 
   /* CTA */
-  .text1 { font-size: 5rem; }
-  .text2 { font-size: 2rem; padding: 0 1rem; }
-  .sec6  { gap: 2.5rem; }
-  .btn   { font-size: 2.2rem; }
+  .text1 { font-size: 6.5rem; }
+  .text2 { font-size: 2.8rem; padding: 0 1rem; }
+  .sec6  { gap: 3rem; }
+
+  /* Buttons */
+  .btn { font-size: 3.2rem; padding: 1.6rem 5rem; min-height: 76px; }
+  .wa-btn { font-size: 3rem; padding: 22px 32px; }
+
+  /* Nav mobile links */
+  .nav-mobile a { font-size: 2.8rem; padding: 22px 32px; }
 }
 
 /* ===================================================
    RESPONSIVE — 576px
    =================================================== */
 @media (max-width: 576px) {
-  html { font-size: 47%; }
+  html { font-size: 68%; }
 
   :root {
-    --header-h: 60px;
-    --banner-h: 28px;
+    --header-h: 64px;
+    --banner-h: 32px;
   }
 
-  .container { gap: 7rem; }
+  .container { gap: 8rem; }
 
-  .section1 img { width: 85%; max-width: 300px; }
-  .text h1 { font-size: 4.5rem; }
+  .section1 img { width: 88%; max-width: 320px; }
+  .text h1 { font-size: 6rem; }
+  .text p  { font-size: 2.6rem; }
 
   .btn {
-    font-size: 2rem;
-    padding: 1rem 2.5rem;
-    min-height: auto;
+    font-size: 3rem;
+    padding: 1.5rem 4rem;
+    min-height: 70px;
   }
 
-  .icon1 { border-radius: 15px; }
-  .icon1 h1 { font-size: 3.8rem; }
+  .icon1 { border-radius: 18px; padding: 22px; }
+  .icon1 h1 { font-size: 4.5rem; }
+  .icon1 p  { font-size: 2.3rem; }
 
   .section3 {
-    border-radius: 2.5rem;
-    padding: 28px 18px;
+    border-radius: 2.8rem;
+    padding: 34px 24px;
   }
-  .section3 h1 { font-size: 3.8rem; }
+  .section3 h1 { font-size: 5rem; }
+  .section3 p  { font-size: 2.4rem; }
 
-  .h111 { font-size: 5.5rem; }
-  .h33  { font-size: 3rem; }
+  .h111 { font-size: 7rem; }
+  .h33  { font-size: 4.2rem; }
+  .h3   { font-size: 2.5rem; }
+  .h11  { font-size: 5rem; }
 
-  .card h3  { font-size: 2.4rem; }
-  .carde    { border-radius: 30px; padding: 2rem 1.5rem; }
-  .aa, .a   { font-size: 2.2rem; }
+  .card { padding: 2.6rem 2rem; border-radius: 22px; }
+  .card h3 { font-size: 3.5rem; }
+  .card span i { font-size: 2.5rem; }
+  .card p.price-half { font-size: 2.2rem; }
 
-  .text1 { font-size: 4rem; }
+  .carde { border-radius: 32px; padding: 2.8rem 2rem; }
+  .aa, .a { font-size: 2.9rem; }
+
+  .text1 { font-size: 5.5rem; }
+  .text2 { font-size: 2.5rem; }
+
+  .wa-btn { font-size: 2.7rem; padding: 18px 28px; }
+  .nav-mobile a { font-size: 2.6rem; padding: 20px 28px; }
 }
 
 /* ===================================================
    RESPONSIVE — 480px
    =================================================== */
 @media (max-width: 480px) {
-  html { font-size: 45%; }
+  html { font-size: 64%; }
 
   :root {
-    --header-h: 58px;
-    --banner-h: 26px;
+    --header-h: 62px;
+    --banner-h: 30px;
+  }
+
+  .container { gap: 7rem; }
+
+  header { padding: 10px 14px; }
+  .logo  { width: 48px; }
+
+  .section1 { padding: 3.5rem 1.4rem 2rem; }
+  .section1 img { width: 100%; max-width: 290px; border-radius: 18px; }
+
+  .text h1 { font-size: 5.5rem; }
+  .text p  { font-size: 2.4rem; margin-top: 2rem; margin-bottom: 2rem; }
+
+  .btn { font-size: 2.8rem; padding: 1.4rem 3.5rem; min-height: 68px; }
+
+  .section2 { padding: 28px 14px; gap: 28px; }
+  .icon1 { padding: 20px; }
+  .icon1 h1 { font-size: 4.2rem; }
+  .icon1 p  { font-size: 2.2rem; }
+
+  .section3-wrapper { margin-bottom: -4rem; }
+  .section3 {
+    width: 100%;
+    border-radius: 2.5rem;
+    padding: 30px 20px;
+  }
+  .section3 h1 { font-size: 4.5rem; }
+  .section3 p  { font-size: 2.2rem; }
+
+  .sec4 { padding-top: 9rem; }
+  .h33  { font-size: 4rem; }
+  .h111 { font-size: 6.5rem; }
+
+  .section4,
+  .section5 { padding: 2rem 1.4rem; gap: 1rem; }
+
+  .card { border-radius: 20px; padding: 2.4rem 1.8rem; }
+  .card h3 { font-size: 3.2rem; }
+  .card span { width: 60px; height: 60px; }
+  .card span i { font-size: 2.3rem; }
+  .card p.price-half { font-size: 2rem; }
+
+  .carde { border-radius: 28px; }
+  .aa, .a { font-size: 2.7rem; }
+
+  .sec5 { padding: 0 0.8rem; }
+  .sec6 { gap: 2.5rem; padding: 0 1.2rem; }
+  .text1 { font-size: 5rem; }
+  .text2 { font-size: 2.3rem; }
+
+  footer { padding: 40px 18px 22px; }
+  .footer-brand h2 { font-size: 21px; }
+  .footer-brand p  { font-size: 16px; }
+  .footer-col ul li a { font-size: 16px; }
+  .wa-btn { font-size: 2.5rem; padding: 18px 26px; }
+  .nav-mobile a { font-size: 2.5rem; padding: 18px 24px; }
+}
+
+/* ===================================================
+   RESPONSIVE — 360px
+   =================================================== */
+@media (max-width: 360px) {
+  html { font-size: 60%; }
+
+  :root {
+    --header-h: 60px;
+    --banner-h: 28px;
   }
 
   .container { gap: 6rem; }
@@ -1225,81 +1320,31 @@ footer::before {
   header { padding: 8px 12px; }
   .logo  { width: 46px; }
 
-  .section1 { padding: 3rem 1rem 1.5rem; }
-  .section1 img { width: 100%; max-width: 280px; border-radius: 15px; }
+  .text h1 { font-size: 5rem; }
+  .text p  { font-size: 2.2rem; }
+  .section1 img { max-width: 260px; }
 
-  .text h1 { font-size: 4rem; }
-  .text p  { font-size: 1.8rem; margin-top: 1.5rem; margin-bottom: 1.5rem; }
+  .btn { font-size: 2.6rem; padding: 1.3rem 3rem; min-height: 64px; }
 
-  .btn { font-size: 1.9rem; padding: 1rem 2rem; }
+  .icon1 h1 { font-size: 3.8rem; }
+  .icon1 p  { font-size: 2rem; }
 
-  .section2 { padding: 20px 10px; gap: 25px; }
-  .icon1 { padding: 16px; }
-  .icon1 h1 { font-size: 3.5rem; }
-  .icon1 p  { font-size: 1.8rem; }
+  .h11  { font-size: 4.2rem; }
+  .h33  { font-size: 3.5rem; }
+  .h111 { font-size: 6rem; }
 
-  /* Section3 — بدون rounded corners على الأطراف لما تبقى full-width */
-  .section3-wrapper { margin-bottom: -4rem; }
-  .section3 {
-    width: 100%;
-    border-radius: 2rem;
-    padding: 24px 16px;
-  }
-  .section3 h1 { font-size: 3.5rem; }
-  .section3 p  { font-size: 1.8rem; }
+  .section3 h1 { font-size: 4rem; }
+  .section3 p  { font-size: 2rem; }
 
-  .sec4 { padding-top: 9rem; }
-  .h33  { font-size: 3rem; }
-  .h111 { font-size: 5rem; }
+  .card h3 { font-size: 3rem; }
+  .card span i { font-size: 2.1rem; }
+  .aa, .a  { font-size: 2.5rem; }
 
-  .section4,
-  .section5 { padding: 1.5rem 1rem; gap: 0.8rem; }
+  .text1 { font-size: 4.5rem; }
+  .text2 { font-size: 2.1rem; }
 
-  .card { border-radius: 18px; padding: 1.75rem 1.5rem; }
-  .card h3 { font-size: 2.2rem; }
-
-  .carde { border-radius: 26px; }
-  .aa, .a { font-size: 2rem; }
-
-  .sec5 { padding: 0 0.5rem; }
-  .sec6 { gap: 2rem; padding: 0 1rem; }
-  .text1 { font-size: 3.5rem; }
-  .text2 { font-size: 1.8rem; }
-
-  footer { padding: 40px 16px 20px; }
-  .footer-brand h2 { font-size: 17px; }
-  .wa-btn { font-size: 1.9rem; padding: 14px 20px; }
-}
-
-/* ===================================================
-   RESPONSIVE — 360px
-   =================================================== */
-@media (max-width: 360px) {
-  html { font-size: 40%; }
-
-  :root {
-    --header-h: 56px;
-    --banner-h: 24px;
-  }
-
-  .text h1 { font-size: 3.5rem; }
-  .section1 img { max-width: 240px; }
-  .btn { font-size: 1.8rem; padding: 0.9rem 1.8rem; }
-
-  .icon1 h1 { font-size: 3rem; }
-  .h11  { font-size: 3.5rem; }
-  .h33  { font-size: 2.8rem; }
-  .h111 { font-size: 4.5rem; }
-
-  .section3 h1 { font-size: 3rem; }
-  .section3 p  { font-size: 1.6rem; }
-
-  .card h3 { font-size: 2rem; }
-  .aa, .a  { font-size: 1.8rem; }
-
-  .text1 { font-size: 3rem; }
-  .text2 { font-size: 1.6rem; }
-
-  .nav-mobile a { font-size: 1.8rem; padding: 12px 16px; }
-  .footer-brand h2 { font-size: 15px; }
+  .nav-mobile a { font-size: 2.4rem; padding: 16px 20px; }
+  .footer-brand h2 { font-size: 18px; }
+  .footer-brand p  { font-size: 15px; }
+  .wa-btn { font-size: 2.3rem; padding: 16px 22px; }
 }
