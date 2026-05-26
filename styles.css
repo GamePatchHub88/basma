@@ -15,7 +15,57 @@
   --transition: 0.3s ease;
   --header-h: 80px;
   --banner-h: 36px;
+
+  /* ── متغيرات السيم ── */
+  --clr-header-bg:        #ffffff;
+  --clr-section2-bg:      rgb(224, 224, 224);
+  --clr-surface:          #ffffff;
+  --clr-text-body:        #000000;
+  --clr-text-muted:       #808080;
+  --clr-text-dim:         #555;
+  --clr-nav-link:         #0f172a;
+  --clr-li-text:          #444;
+  --clr-h3-text:          #333;
+  --clr-p-text:           #666;
+  --clr-h11-text:         #272727;
+  --clr-bar-bg:           #0f172a;
+  --clr-nav-mobile-bg:    #ffffff;
+  --clr-nav-mobile-link:  #0f172a;
+  --clr-nav-mobile-hover: #f0f9ff;
 }
+
+/* ===================================================
+   DARK MODE — :has(#themeToggle:checked)
+   =================================================== */
+body:has(#themeToggle:checked) {
+  --clr-bg:               #07101e;
+  --clr-header-bg:        #0a1628;
+  --clr-section2-bg:      #0b1524;
+  --clr-surface:          #0f1e2e;
+  --clr-text-body:        #e2e8f0;
+  --clr-text-muted:       #8b9eb5;
+  --clr-text-dim:         #7a9ab8;
+  --clr-nav-link:         #e2e8f0;
+  --clr-li-text:          #cbd5e1;
+  --clr-h3-text:          #e2e8f0;
+  --clr-p-text:           #94a3b8;
+  --clr-h11-text:         #e2e8f0;
+  --clr-bar-bg:           #e2e8f0;
+  --clr-nav-mobile-bg:    #0a1628;
+  --clr-nav-mobile-link:  #e2e8f0;
+  --clr-nav-mobile-hover: #0d2240;
+}
+
+/* تكيّف الإضاءة على العناصر ذات الخلفية الثابتة */
+body:has(#themeToggle:checked) .section2 .icon1 { box-shadow: 0 0 8px rgba(0,174,239,0.12); }
+body:has(#themeToggle:checked) .carde            { border-color: rgba(0,174,239,0.2); box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+body:has(#themeToggle:checked) .carde.popular    { border-color: #1a90ff; }
+body:has(#themeToggle:checked) .carde .rr h3     { color: #e2e8f0 !important; }
+body:has(#themeToggle:checked) .carde .rr p      { color: #94a3b8 !important; }
+body:has(#themeToggle:checked) .carde span       { color: #3fb950 !important; }
+body:has(#themeToggle:checked) .carde small      { color: #f87171 !important; }
+body:has(#themeToggle:checked) footer            { background: #040c18; border-top-color: #0f2040; }
+body:has(#themeToggle:checked) .footer-badge     { background: #0a1628; border-color: #0f2040; }
 
 /* ===================================================
    FONTS
@@ -64,7 +114,7 @@ html {
 body {
   font-size: 1.6rem;
   line-height: 1.6;
-  color: #000000;
+  color: var(--clr-text-body);
   background: var(--clr-bg);
   min-height: 100vh;
   text-rendering: optimizeLegibility;
@@ -160,7 +210,7 @@ header {
   gap: 30px;
   width: 100%;
   height: var(--header-h);
-  background-color: #ffffff;
+  background-color: var(--clr-header-bg);
   font-family: "r", sans-serif;
   font-weight: 900;
   font-size: 2rem;
@@ -202,7 +252,7 @@ header nav {
 header nav a {
   position: relative;
   padding-bottom: 4px;
-  color: #0f172a;
+  color: var(--clr-nav-link);
   font-size: 1.9rem;
   transition: color var(--transition);
 }
@@ -256,7 +306,7 @@ header nav a:hover::after { width: 100%; }
   font-family: "r", sans-serif;
   font-weight: 900;
   font-size: 2.6rem;
-  color: #808080;
+  color: var(--clr-text-muted);
   margin-bottom: 2.5rem;
   line-height: 1.7;
 }
@@ -305,7 +355,7 @@ header nav a:hover::after { width: 100%; }
    SECTION 2 — SERVICES OVERVIEW
    =================================================== */
 .section2 {
-  background-color: rgb(224, 224, 224);
+  background-color: var(--clr-section2-bg);
   width: 100%;
   padding: 60px 40px;
   display: flex;
@@ -340,7 +390,7 @@ header nav a:hover::after { width: 100%; }
   font-weight: 900;
   font-size: 5.5rem;
   text-align: center;
-  color: #272727;
+  color: var(--clr-h11-text);
 }
 
 .icons {
@@ -358,7 +408,7 @@ header nav a:hover::after { width: 100%; }
 }
 
 .icon1 {
-  background-color: white;
+  background-color: var(--clr-surface);
   padding: 24px;
   border-radius: var(--radius-lg);
   display: flex;
@@ -394,7 +444,7 @@ header nav a:hover::after { width: 100%; }
   font-family: "r", sans-serif;
   font-weight: 900;
   font-size: 1.9rem;
-  color: #555;
+  color: var(--clr-text-dim);
 }
 
 /* ===================================================
@@ -579,7 +629,7 @@ header nav a:hover::after { width: 100%; }
 }
 
 .carde {
-  background: white;
+  background: var(--clr-surface);
   border-radius: 40px;
   padding: 2.5rem 2rem;
   border: 1px solid rgba(0, 174, 239, 0.12);
@@ -676,7 +726,7 @@ ul li {
   font-size: 1.8rem;
   padding-right: 22px;
   position: relative;
-  color: #444;
+  color: var(--clr-li-text);
 }
 
 ul li::before {
@@ -692,8 +742,8 @@ ul li::before {
 
 .carde img { width: 75px; }
 
-h3 { color: #333; margin-top: 8px; }
-p  { color: #666; }
+h3 { color: var(--clr-h3-text); margin-top: 8px; }
+p  { color: var(--clr-p-text); }
 
 /* ===================================================
    WHATSAPP BUTTON
@@ -758,7 +808,7 @@ p  { color: #666; }
   font-weight: 900;
   font-size: 2.4rem;
   text-align: center;
-  color: #808080;
+  color: var(--clr-text-muted);
   max-width: 700px;
   line-height: 1.7;
 }
@@ -973,7 +1023,7 @@ footer::before {
   display: block;
   width: 22px;
   height: 2.5px;
-  background: #0f172a;
+  background: var(--clr-bar-bg);
   border-radius: 3px;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
@@ -986,7 +1036,7 @@ footer::before {
 .nav-mobile {
   display: none;
   flex-direction: column;
-  background: #ffffff;
+  background: var(--clr-nav-mobile-bg);
   border-bottom: 3px solid var(--clr-primary);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -1001,7 +1051,7 @@ footer::before {
   font-family: "r", sans-serif;
   font-size: 2rem;
   font-weight: 900;
-  color: #0f172a;
+  color: var(--clr-nav-mobile-link);
   padding: 14px 24px;
   border-bottom: 1px solid rgba(0, 174, 239, 0.15);
   display: flex;
@@ -1014,7 +1064,7 @@ footer::before {
 }
 
 .nav-mobile a:last-child { border-bottom: none; }
-.nav-mobile a:hover { background: #f0f9ff; color: var(--clr-primary); }
+.nav-mobile a:hover { background: var(--clr-nav-mobile-hover); color: var(--clr-primary); }
 
 /* ===================================================
    RESPONSIVE — 1400px
@@ -1347,4 +1397,65 @@ footer::before {
   .footer-brand h2 { font-size: 18px; }
   .footer-brand p  { font-size: 15px; }
   .wa-btn { font-size: 2.3rem; padding: 16px 22px; }
+}
+/* ===================================================
+   THEME TOGGLE BUTTON
+   =================================================== */
+.theme-toggle-input { display: none; }
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.toggle-track {
+  position: relative;
+  width: 58px;
+  height: 30px;
+  background: var(--grad);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  transition: background 0.35s ease;
+  box-shadow: 0 2px 10px rgba(0, 174, 239, 0.4);
+  flex-shrink: 0;
+}
+
+.toggle-thumb {
+  width: 22px;
+  height: 22px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.35s cubic-bezier(.34,1.56,.64,1);
+  flex-shrink: 0;
+  z-index: 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.icon-sun,
+.icon-moon {
+  position: absolute;
+  font-size: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity 0.25s ease;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.icon-sun  { right: 7px; opacity: 1; }
+.icon-moon { left: 7px;  opacity: 0; }
+
+/* الحالة الداكنة */
+#themeToggle:checked + .theme-toggle-btn .toggle-thumb { transform: translateX(28px); }
+#themeToggle:checked + .theme-toggle-btn .icon-sun  { opacity: 0; }
+#themeToggle:checked + .theme-toggle-btn .icon-moon { opacity: 1; }
+#themeToggle:checked + .theme-toggle-btn .toggle-track {
+  background: linear-gradient(45deg, #0a1628, #1a3a6b);
+  box-shadow: 0 2px 10px rgba(0, 80, 200, 0.4);
 }
