@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
@@ -21,31 +21,37 @@
 
 <body>
     <div class="container">
-        <header>
-            <img src="./logo.jpg" alt="logo" class="logo">
+        <!-- الغلاف الواحد الـ sticky يضمن التصاق الكل معاً -->
+        <div class="sticky-top">
+            <header>
+                <img src="./logo.jpg" alt="logo" class="logo">
 
-            <!-- ظاهر على الديسكتوب -->
-            <nav class="nav-desktop">
-                <a class="nav__main" href="#main">الرئيسية</a>
-                <a class="nav__services" href="#services">ما نقدم</a>
-                <a class="nav__packages" href="#packages">الباقات</a>
-                <a class="nav__subscribe" href="#subscribe">اشترك الأن</a>
-            </nav>
+                <!-- ظاهر على الديسكتوب -->
+                <nav class="nav-desktop">
+                    <a class="nav__main" href="#main">الرئيسية</a>
+                    <a class="nav__services" href="#services">ما نقدم</a>
+                    <a class="nav__packages" href="#packages">الباقات</a>
+                    <a class="nav__subscribe" href="#subscribe">اشترك الأن</a>
+                </nav>
 
-            <!-- زر الهامبرغر - ظاهر على الموبايل فقط -->
-            <button class="ham-btn" id="hamBtn" aria-label="القائمة">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-        </header>
+                <!-- زر الهامبرغر - ظاهر على الموبايل فقط -->
+                <button class="ham-btn" id="hamBtn" aria-label="القائمة">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </header>
 
-        <!-- القائمة المنسدلة -->
-        <div class="nav-mobile" id="navMobile">
-            <a href="#main" onclick="closeMenu()">الرئيسية</a>
-            <a href="#services" onclick="closeMenu()">ما نقدم</a>
-            <a href="#packages" onclick="closeMenu()">الباقات</a>
-            <a href="#subscribe" onclick="closeMenu()">اشترك الأن</a>
+            <!-- شريط البانر الأزرق -->
+            <div class="banner">التسويق والحلول التكنولوجية | تنمية المشاريع</div>
+
+            <!-- القائمة المنسدلة -->
+            <div class="nav-mobile" id="navMobile">
+                <a href="#main" onclick="closeMenu()">الرئيسية</a>
+                <a href="#services" onclick="closeMenu()">ما نقدم</a>
+                <a href="#packages" onclick="closeMenu()">الباقات</a>
+                <a href="#subscribe" onclick="closeMenu()">اشترك الأن</a>
+            </div>
         </div>
 
         <script>
@@ -104,11 +110,13 @@
             </div>
 
         </div>
-        <div class="section3">
-            <h1>بروتوكول النمو</h1>
-            <p style="color: white;">منهجية خاصة تدمج التقنية والبيانات والتسويق في حلقة ذاتية التحسين. نسميها
-                "البروتوكول" — المخطط لتوسع
-                المؤسسات الحديثة.</p>
+        <div class="section3-wrapper">
+            <div class="section3">
+                <h1>بروتوكول النمو</h1>
+                <p style="color: white;">منهجية خاصة تدمج التقنية والبيانات والتسويق في حلقة ذاتية التحسين. نسميها
+                    "البروتوكول" — المخطط لتوسع
+                    المؤسسات الحديثة.</p>
+            </div>
         </div>
         <div class="sec4" id="services">
             <h3 class="h33">ما نقدم</h3>
