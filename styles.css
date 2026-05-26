@@ -1135,7 +1135,9 @@ footer::before {
    RESPONSIVE — 768px
    =================================================== */
 @media (max-width: 768px) {
-  html { font-size: 72%; }
+  html { font-size: 72%; 
+  scroll-padding-top: calc(var(--header-h) + var(--banner-h) + 2rem);
+}
 
   :root {
     --header-h: 68px;
